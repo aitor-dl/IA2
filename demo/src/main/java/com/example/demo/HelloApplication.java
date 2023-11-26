@@ -59,9 +59,9 @@ public class HelloApplication extends Application {
 
         mode = new ToggleGroup();
 
-        RadioButton distance = new RadioButton("Distance");
-        RadioButton time = new RadioButton("Time");
-        RadioButton stop = new RadioButton("Stop Number");
+        RadioButton distance = new RadioButton("Distancia");
+        RadioButton time = new RadioButton("Tiempo");
+        RadioButton stop = new RadioButton("Transbordo");
 
         distance.setToggleGroup(mode);
         time.setToggleGroup(mode);
