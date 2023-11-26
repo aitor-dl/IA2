@@ -1,0 +1,445 @@
+[
+    {
+        "Origen": "Vaulx-en-Velin La Soie",
+        "Destino": "Laurent Bonnevay Astroballe",
+        "Peso": {
+            "Distancia": 1.13,
+            "Tiempo": 1,
+            "Transbordo": 0 
+
+        }
+    },
+    {
+        "Origen": "Laurent Bonnevay Astroballe",
+        "Destino": "Cusset",
+        "Peso": {
+            "Distancia": 0.664,
+            "Tiempo": 2,
+            "Transbordo": 0 
+
+        }
+    },
+    {
+        "Origen": "Cusset",
+        "Destino": "Flachet",
+        "Peso": {
+            "Distancia": 0.850,
+            "Tiempo": 2,
+            "Transbordo": 0 
+
+        }
+    },
+    {
+        "Origen": "Flachet",
+        "Destino": "Gratte-Ciel",
+        "Peso": {
+            "Distancia": 0.620,
+            "Tiempo": 1,
+            "Transbordo": 0 
+
+        }
+    },
+    {
+        "Origen": "Gratte-Ciel",
+        "Destino": "République Villeurbanne",
+        "Peso": {
+            "Distancia": 0.724,
+            "Tiempo": 1,
+            "Transbordo": 0 
+
+        }
+    },
+    {
+        "Origen": "République Villeurbanne",
+        "Destino": "Linea-A Charpennes Charles Hernu",
+        "Peso": {
+            "Distancia": 0.837,
+            "Tiempo": 2,
+            "Transbordo": 0 
+
+        }
+    },
+    {
+        "Origen": "Linea-A Charpennes Charles Hernu",
+        "Destino": "Masséna",
+        "Peso": {
+            "Distancia": 0.773,
+            "Tiempo": 2,
+            "Transbordo": 0 
+
+        }
+    },
+    {
+        "Origen": "Masséna",
+        "Destino": "Foch",
+        "Peso": {
+            "Distancia": 0.693,
+            "Tiempo": 1,
+            "Transbordo": 0 
+
+        }
+    },
+    {
+        "Origen": "Foch",
+        "Destino": "Linea-A Hôtel De Ville Louis Pradel",
+        "Peso": {
+            "Distancia": 0.633,
+            "Tiempo": 2,
+            "Transbordo": 0 
+
+        }
+    },
+    {
+        "Origen": "Linea-A Hôtel De Ville Louis Pradel",
+        "Destino": "Cordeliers",
+        "Peso": {
+            "Distancia": 0.437,
+            "Tiempo": 1,
+            "Transbordo": 0 
+
+        }
+    },
+    {
+        "Origen": "Cordeliers",
+        "Destino": "Linea-A Bellecour",
+        "Peso": {
+            "Distancia": 0.616,
+            "Tiempo": 2,
+            "Transbordo": 0 
+
+        }
+    },
+    {
+        "Origen": "Linea-A Bellecour",
+        "Destino": "Ampère Victor Hugo",
+        "Peso": {
+            "Distancia": 0.656,
+            "Tiempo": 1,
+            "Transbordo": 0 
+
+        }
+    },
+    {
+        "Origen": "Ampère Victor Hugo",
+        "Destino": "Perrache",
+        "Peso": {
+            "Distancia": 0.656,
+            "Tiempo": 1,
+            "Transbordo": 0 
+
+        }
+    },
+    {
+        "Origen": "Linea-A Bellecour",
+        "Destino": "Linea-D Bellecour",
+        "Peso": {
+            "Distancia": 0,
+            "Tiempo": 0,
+            "Transbordo": 1 
+
+        }
+    },
+    {
+        "Origen": "Linea-A Hôtel De Ville Louis Pradel",
+        "Destino": "Linea-C Hôtel De Ville Louis Pradel",
+        "Peso": {
+            "Distancia": 0,
+            "Tiempo": 0,
+            "Transbordo": 1
+
+        }
+    },
+    {
+        "Origen": "Oullins Gare",
+        "Destino": "Stade de Gerland",
+        "Peso": {
+            "Distancia": 1.7,
+            "Tiempo": 2,
+            "Transbordo": 0 
+
+        }
+    },
+    {
+        "Origen": "Stade de Gerland",
+        "Destino": "Debourg",
+        "Peso": {
+            "Distancia": 0.536,
+            "Tiempo": 1,
+            "Transbordo":0 
+
+        }
+    },
+    {
+        "Origen": "Debourg",
+        "Destino": "Place Jean Jaurès",
+        "Peso": {
+            "Distancia": 0.811,
+            "Tiempo": 1,
+            "Transbordo": 0 
+
+        }
+    },
+    {
+        "Origen": "Place Jean Jaurès",
+        "Destino": "Jean Macé",
+        "Peso": {
+            "Distancia": 0.984,
+            "Tiempo": 2,
+            "Transbordo": 0 
+
+        }
+    },
+    {
+        "Origen": "Jean Macé",
+        "Destino": "Linea-B Saxe Gambetta",
+        "Peso": {
+            "Distancia": 0.967,
+            "Tiempo": 2,
+            "Transbordo": 0 
+
+        }
+    },
+    {
+        "Origen": "Linea-B Saxe Gambetta",
+        "Destino": "Place Guichard Bourse du Travail",
+        "Peso": {
+            "Distancia": 0.645,
+            "Tiempo": 2,
+            "Transbordo": 0 
+
+        }
+    },
+    {
+        "Origen": "Place Guichard Bourse du Travail",
+        "Destino": "Gare Part-Dieu Vivier Merle",
+        "Peso": {
+            "Distancia": 0.829,
+            "Tiempo": 2,
+            "Transbordo": 0 
+
+        }
+    },
+    {
+        "Origen": "Gare Part-Dieu Vivier Merle",
+        "Destino": "Brotteaux",
+        "Peso": {
+            "Distancia": 0.625,
+            "Tiempo": 1,
+            "Transbordo": 0 
+
+        }
+    },
+    {
+        "Origen": "Brotteaux",
+        "Destino": "Linea-B Charpennes Charles Hernu",
+        "Peso": {
+            "Distancia": 0.515,
+            "Tiempo": 2,
+            "Transbordo": 0 
+
+        }
+    },
+    {
+        "Origen": "Linea-B Saxe Gambetta",
+        "Destino": "Linea-D Saxe Gambetta",
+        "Peso": {
+            "Distancia": 0,
+            "Tiempo": 0,
+            "Transbordo": 1 
+
+        }
+    },
+    {
+        "Origen": "Linea-B Charpennes Charles Hernu",
+        "Destino": "Linea-A Charpennes Charles Hernu",
+        "Peso": {
+            "Distancia": 0,
+            "Tiempo": 0,
+            "Transbordo": 1 
+
+        }
+    },
+    {
+        "Origen": "Linea-C Hôtel De Ville Louis Pradel",
+        "Destino": "Croix-Paquet",
+        "Peso": {
+            "Distancia": 0.391,
+            "Tiempo": 2,
+            "Transbordo": 0 
+
+        }
+    },
+    {
+        "Origen": "Croix-Paquet",
+        "Destino": "Croix-Rousse",
+        "Peso": {
+            "Distancia": 0.502,
+            "Tiempo": 2,
+            "Transbordo": 0 
+
+        }
+    },
+    {
+        "Origen": "Croix-Rousse",
+        "Destino": "Hénon",
+        "Peso": {
+            "Distancia": 0.657,
+            "Tiempo": 2,
+            "Transbordo": 0 
+
+        }
+    },
+    {
+        "Origen": "Hénon",
+        "Destino": "Cuire",
+        "Peso": {
+            "Distancia": 0.892,
+            "Tiempo": 2,
+            "Transbordo": 0 
+
+        }
+    },
+    {
+        "Origen": "Gare de Venissieux",
+        "Destino": "Parilly",
+        "Peso": {
+            "Distancia": 1.56,
+            "Tiempo": 4,
+            "Transbordo": 0 
+
+        }
+    },
+    {
+        "Origen": "Parilly",
+        "Destino": "Mermoz Pinel",
+        "Peso": {
+            "Distancia": 1.25,
+            "Tiempo": 2,
+            "Transbordo": 0 
+
+        }
+    },
+    {
+        "Origen": "Mermoz Pinel",
+        "Destino": "Laënnec",
+        "Peso": {
+            "Distancia": 0.846,
+            "Tiempo": 1,
+            "Transbordo": 0 
+
+        }
+    },
+    {
+        "Origen": "Laënnec",
+        "Destino": "Grange Blanche",
+        "Peso": {
+            "Distancia": 0.776,
+            "Tiempo": 2,
+            "Transbordo": 0 
+
+        }
+    },
+    {
+        "Origen": "Grange Blanche",
+        "Destino": "Monplaisir-Lumière",
+        "Peso": {
+            "Distancia": 0.661,
+            "Tiempo": 1,
+            "Transbordo": 0 
+
+        }
+    },
+    {
+        "Origen": "Monplaisir-Lumière",
+        "Destino": "Sans-Souci",
+        "Peso": {
+            "Distancia": 0.612,
+            "Tiempo": 2,
+            "Transbordo": 0 
+
+        }
+    },
+    {
+        "Origen": "Sans-Souci",
+        "Destino": "Garibaldi",
+        "Peso": {
+            "Distancia": 0.900,
+            "Tiempo": 1,
+            "Transbordo": 0 
+
+        }
+    },
+    {
+        "Origen": "Garibaldi",
+        "Destino": "Linea-D Saxe Gambetta",
+        "Peso": {
+            "Distancia": 0.636,
+            "Tiempo": 2,
+            "Transbordo": 0 
+
+        }
+    },
+    {
+        "Origen": "Linea-D Saxe Gambetta",
+        "Destino": "Guillotière",
+        "Peso": {
+            "Distancia": 0.406,
+            "Tiempo": 1,
+            "Transbordo": 0 
+
+        }
+    },
+    {
+        "Origen": "Guillotière",
+        "Destino": "Linea-D Bellecour",
+        "Peso": {
+            "Distancia": 0.731,
+            "Tiempo": 2,
+            "Transbordo": 0 
+
+        }
+    },
+    {
+        "Origen": "Linea-D Bellecour",
+        "Destino": "Vieux Lyon Cathédrale St. Jean",
+        "Peso": {
+            "Distancia": 0.660,
+            "Tiempo": 1,
+            "Transbordo": 0 
+
+        }
+    },
+    {
+        "Origen": "Vieux Lyon Cathédrale St. Jean",
+        "Destino": "Gorge De Loup",
+        "Peso": {
+            "Distancia": 1.760,
+            "Tiempo": 3,
+            "Transbordo": 0 
+
+        }
+    },
+    {
+        "Origen": "Gorge De Loup",
+        "Destino": "Valmy",
+        "Peso": {
+            "Distancia": 0.939,
+            "Tiempo": 1,
+            "Transbordo": 0 
+
+        }
+    },
+    {
+        "Origen": "Valmy",
+        "Destino": "Gare de Vaise",
+        "Peso": {
+            "Distancia": 0.648,
+            "Tiempo": 1,
+            "Transbordo": 0 
+
+        }
+    }
+
+
+
+]

@@ -1,0 +1,19 @@
+.root{
+    -fx-background-color: #F7F9F9;
+    -fx-font-family: "Trebuchet MS";
+    -fx-font-size: 12pt;
+    -fx-text-background-color : "white";
+}
+.header{
+    -fx-background-color: #2E4053  ;
+}
+.choice {
+    -fx-mark-color: #2E4053;
+}
+.button{
+    -fx-background-color: "white";
+    -fx-alignment: center;
+}
+.togglegroup{
+        -fx-background-color: "white";
+}
