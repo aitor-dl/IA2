@@ -30,7 +30,7 @@
 		"Longitude": 4.873669996938641
 	},
 	{
-		"Name": "Charpennes Charles Hernu",
+		"Name": "Linea-A Charpennes Charles Hernu",
 		"Latitude": 45.77074226393096,
 		"Longitude": 4.862969610428967 
 	},
@@ -45,7 +45,7 @@
 		"Longitude": 4.844233325775036
 	},
 	{
-		"Name": "Hôtel De Ville Louis Pradel",
+		"Name": "Linea-A Hôtel De Ville Louis Pradel",
 		"Latitude": 45.76753468565001,
 		"Longitude": 4.836299268101861 
 	},
@@ -55,7 +55,7 @@
 		"Longitude": 4.835756825774728
 	},
 	{
-		"Name": "Bellecour",
+		"Name": "Linea-A Bellecour",
 		"Latitude": 45.75789654002199,
 		"Longitude": 4.833673868101367 
 	},
@@ -95,7 +95,7 @@
 		"Longitude": 4.842398010427577
 	},
 	{
-		"Name": "Saxe Gambetta",
+		"Name": "Linea-B Saxe Gambetta",
 		"Latitude": 45.75390734483807,
 		"Longitude": 4.846949539264582 
 	},
@@ -114,6 +114,16 @@
 		"Latitude": 45.76684493964208,
 		"Longitude": 4.859320725774908
 	},
+	{
+		"Name": "Linea-B Charpennes Charles Hernu",
+		"Latitude": 45.77074226393096,
+		"Longitude": 4.862969610428967
+	},	
+	{
+		"Name": "Linea-C Hôtel De Ville Louis Pradel",
+		"Latitude": 45.76753468565001,
+		"Longitude": 4.836299268101861 
+	},	
 	{
 		"Name": "Croix-Paquet",
 		"Latitude": 45.771119578994785,
@@ -174,10 +184,20 @@
 		"Latitude": 45.75175025509033,
 		"Longitude": 4.853982310427905
 	},
+		{
+		"Name": "Linea-D Saxe Gambetta",
+		"Latitude": 45.75390734483807,
+		"Longitude": 4.846949539264582 
+	},
 	{
 		"Name": "Guillotière",
 		"Latitude": 45.75556252908579,
 		"Longitude": 4.842221752755046
+	},
+	{
+		"Name": "Linea-D Bellecour",
+		"Latitude": 45.75789654002199,
+		"Longitude": 4.833673868101367 
 	},
 	{
 		"Name": "Fourviere",
