@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -35,10 +34,10 @@ public class Astar {
         this.origen = origen;
         this.destino = destino;
         JSONParser parser = new JSONParser();
-        InputStream is = App.class.getResourceAsStream("/json/coordenadas.json");
+        InputStream is = getClass().getResourceAsStream("/json/coordenadas.json");
         Reader rd = new InputStreamReader(is, "UTF-8");
         coords = (JSONArray) parser.parse(rd);
-        is = App.class.getResourceAsStream("/json/aristas.json");
+        is = getClass().getResourceAsStream("/json/aristas.json");
         rd = new InputStreamReader(is, "UTF-8");
         aristas = (JSONArray) parser.parse(rd);
         /* inicializar estructuras de datos */
@@ -68,7 +67,7 @@ public class Astar {
         initHeuristica();
     }
 
-    private void initHeuristica() throws IllegalArgumentException {
+    public void initHeuristica() throws IllegalArgumentException {
         boolean encontrado = false;
         JSONObject jdestino = null;
         for (int i = 0; i < coords.size() && !encontrado; i++) {
@@ -107,17 +106,17 @@ public class Astar {
         listaAbierta.put(nodo, heuristica.get(nodo));
         do {
             camino = menorCamino(listaAbierta.entrySet());
-            /* System.out.println("-------------------------------------------------------------");
-            System.out.println("camino actual: " + camino); */
+            System.out.println("-------------------------------------------------------------");
+            System.out.println("camino actual: " + camino);
             pesoCamino = calcularPeso(camino);
             String[] caminoArray = camino.split("/");
             nodo = caminoArray[caminoArray.length - 1];
-            /* System.out.println("nodo actual: " + nodo); */
+            System.out.println("nodo actual: " + nodo);
             visitados.put(nodo, pesoCamino + heuristica.get(nodo));
             if (!nodo.equals(destino)) {
                 actualizarEstructuras(listaAbierta, camino, pesoCamino);
-                /* System.out.println("ListaAbierta: " + listaAbierta.toString());
-                System.out.println("Visitados: " + visitados.toString()); */
+                System.out.println("ListaAbierta: " + listaAbierta.toString());
+                System.out.println("Visitados: " + visitados.toString());
             }
         } while (!nodo.equals(destino));
         return camino;
@@ -152,19 +151,19 @@ public class Astar {
         String nodo = caminoArray[caminoArray.length - 1];
         Set<String> edges = estaciones.edgesOf(nodo);
         for (String edge : edges) {
-            /* System.out.println("edge:" + edge); */
+            System.out.println("edge:" + edge);
             String nodoFuente = estaciones.getEdgeSource(edge);
             String nodoObjetivo = estaciones.getEdgeTarget(edge);
             nodoObjetivo = nodoObjetivo.equals(nodo) ? nodoFuente : nodoObjetivo;
-            /* System.out.println("nodo de la arista: " + nodoObjetivo); */
+            System.out.println("nodo de la arista: " + nodoObjetivo);
             if (!contieneNodo(caminoArray, nodoObjetivo)) {
-                /* System.out.println("NO CONTIENE NODO OBJETIVO"); */
+                System.out.println("NO CONTIENE NODO OBJETIVO");
                 String cActualizado = camino;
                 cActualizado = camino + "/" + nodoObjetivo;
-                /* System.out.println("camino actualizado: " + cActualizado); */
+                System.out.println("camino actualizado: " + cActualizado);
                 double pActualizado = peso + estaciones.getEdgeWeight(edge) + heuristica.get(nodoObjetivo);
                 boolean contieneCamino = contieneCamino(listaAbierta, cActualizado);
-                /* System.out.println("contieneCamino: " + contieneCamino); */
+                System.out.println("contieneCamino: " + contieneCamino);
                 listaAbierta.remove(camino);
                 if (!contieneCamino || pActualizado < listaAbierta.get(cActualizado)) {
                     listaAbierta.put(cActualizado, pActualizado);
@@ -185,36 +184,27 @@ public class Astar {
         return encontrado;
     }
 
-    // listaAbierta = {Vaulx-en-Velin La Soie/Laurent Bonnevay Astroballe/Cusset/Flachet/Gratte-Ciel/République Villeurbanne/Linea-A Charpennes Charles}
-    // camino = Vaulx-en-Velin La Soie/Laurent Bonnevay Astroballe/Cusset/Flachet/Gratte-Ciel/République Villeurbanne/Linea-A Charpennes Charles Hernu/Linea-B Charpennes Charles Hernu
-    // Lista abierta Array: [Vaulx-en-Velin La Soie, Laurent Bonnevay Astroballe, Cusset, Flachet, Gratte-Ciel, République Villeurbanne, Linea-A Charpennes Charles Hernu, Masséna]
-    // Camino Array: [Vaulx-en-Velin La Soie, Laurent Bonnevay Astroballe, Cusset, Flachet, Gratte-Ciel, République Villeurbanne, Linea-A Charpennes Charles Hernu, Linea-B Charpennes Charles Hernu
+    // listaAbierta = {Vaux/Laurent}
+    // camino = Vaux/Laurent
+    // cArrayList = [Vaux]
+    // caminoArray = [Vaux,Laurent]
 
     private boolean contieneCamino(Map<String, Double> listaAbierta, String camino) {
-        /* System.out.println("/////////////////Comprobando si contiene camino/////////////////");
-        System.out.println("Lista Abierta: "+listaAbierta.toString());
-        System.out.println("Camino: " + camino); */
         Set<String> keySet = listaAbierta.keySet();
         Iterator<String> it = keySet.iterator();
         String[] caminoArray = camino.split("/");
-        /* System.out.println("Camino Array: " + Arrays.toString((caminoArray))); */
         boolean encontrado = true;
         while (it.hasNext() && encontrado) {
             String[] cArrayList = it.next().split("/");
-            /* System.out.println("Lista abierta Array: " + Arrays.toString((cArrayList))); */
             encontrado = cArrayList.length == caminoArray.length;
             for (int i = 0; i < cArrayList.length && encontrado; i++) {
-                /* System.out.println("Iteracion nº" + i); */
                 String nodo = cArrayList[i];
-                /* System.out.println("nodo a buscar: " + nodo); */
                 encontrado = false;
                 for (int j = 0; j < caminoArray.length && !encontrado; j++) {
-                    /* System.out.println("nodo actual: " + caminoArray[j]); */
                     encontrado = nodo.equals(caminoArray[j]);
                 }
             }
         }
-        /* System.out.println("/////////////////Fin de comprobación /////////////////"); */
         return encontrado;
     }
 
