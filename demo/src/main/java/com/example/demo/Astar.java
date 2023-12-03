@@ -1,10 +1,11 @@
-package com.example.demo;
-
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.PrintStream;
 import java.io.Reader;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -33,11 +34,14 @@ public class Astar {
     public Astar(String origen, String destino, String peso) throws IOException, ParseException {
         this.origen = origen;
         this.destino = destino;
+        if(origen.equals(destino)){
+            return;
+        }
         JSONParser parser = new JSONParser();
-        InputStream is = getClass().getResourceAsStream("/json/coordenadas.json");
+        InputStream is = App.class.getResourceAsStream("/json/coordenadas.json");
         Reader rd = new InputStreamReader(is, "UTF-8");
         coords = (JSONArray) parser.parse(rd);
-        is = getClass().getResourceAsStream("/json/aristas.json");
+        is = App.class.getResourceAsStream("/json/aristas.json");
         rd = new InputStreamReader(is, "UTF-8");
         aristas = (JSONArray) parser.parse(rd);
         /* inicializar estructuras de datos */
@@ -59,15 +63,55 @@ public class Astar {
 
             }
 
-            estaciones.addEdge(origen1, destino1);
+            String edge = estaciones.addEdge(origen1, destino1);
             JSONObject jpeso = (JSONObject) jobj.get("Peso");
             Double p = ((Number) jpeso.get(peso)).doubleValue();
             estaciones.setEdgeWeight(origen1, destino1, p);
         }
-        initHeuristica();
+        if (peso.equals("Tiempo")) {
+            initHeuristicaTiempo();
+        } else {
+            if(peso.equals("Transbordo")){
+                peso = "Distancia";
+            }
+            initHeuristicaDistancia();
+        }
     }
 
-    public void initHeuristica() throws IllegalArgumentException {
+    private void initHeuristicaDistancia() throws IllegalArgumentException {
+        boolean encontrado = false;
+        JSONObject jdestino = null;
+        for (int i = 0; i < coords.size() && !encontrado; i++) {
+            jdestino = (JSONObject) coords.get(i);
+            encontrado = ((String) jdestino.get("Name")).equals(destino);
+        }
+        if (jdestino == null) {
+            throw new IllegalArgumentException();
+        }
+        for (int i = 0; i < coords.size(); i++) {
+            JSONObject jorigen = (JSONObject) coords.get(i);
+            if (!((String) jorigen.get("Name")).equals(destino)) {
+                double origenLat = ((Number) jorigen.get("Latitude")).doubleValue();
+                double origenLong = ((Number) jorigen.get("Longitude")).doubleValue();
+                double destLat = ((Number) jdestino.get("Latitude")).doubleValue();
+                double destLong = ((Number) jdestino.get("Longitude")).doubleValue();
+                double dLat = Math.toRadians(Math.abs(origenLat - destLat));
+                double dLon = Math.toRadians(Math.abs(origenLong - destLong));
+                double a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+                        Math.sin(dLon / 2) * Math.sin(dLon / 2) * Math.cos(destLat)
+                                * Math.cos(origenLat);
+                double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+                heuristica.put((String) jorigen.get("Name"), 6371 * c);
+                
+                /* System.out.println("la heuristica desde  "+(String) jorigen.get("Name") +"es de: " + 6371 * c); */
+                
+            } else {
+                heuristica.put((String) jorigen.get("Name"), 0.0);
+            }
+        }
+    }
+
+    public void initHeuristicaTiempo() throws IllegalArgumentException {
         boolean encontrado = false;
         JSONObject jdestino = null;
         for (int i = 0; i < coords.size() && !encontrado; i++) {
@@ -90,7 +134,7 @@ public class Astar {
                         Math.sin(dLon / 2) * Math.sin(dLon / 2) * Math.cos(destLat)
                                 * Math.cos(origenLat);
                 double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-                heuristica.put((String) jorigen.get("Name"), 6371 * c);
+                heuristica.put((String) jorigen.get("Name"), (6371 * c * 60) / 39);
             } else {
                 heuristica.put((String) jorigen.get("Name"), 0.0);
             }
@@ -98,26 +142,45 @@ public class Astar {
     }
 
     public String algoritmo() {
+        if(origen.equals(destino)){
+            return origen;
+        }
         Map<String, Double> visitados = new HashMap<>();
         Map<String, Double> listaAbierta = new HashMap<>();
         String camino = origen;
         Double pesoCamino = Double.MAX_VALUE;
+        Double aumento = 0.0;
         String nodo = origen;
         listaAbierta.put(nodo, heuristica.get(nodo));
+        int i = 0;
+        String caminoAnterior = "";
         do {
+            if (i != 0) {
+                caminoAnterior = camino;
+            }
             camino = menorCamino(listaAbierta.entrySet());
-            System.out.println("-------------------------------------------------------------");
-            System.out.println("camino actual: " + camino);
+            /* System.out.println("-------------------------------------------------------------");
+            System.out.println("Iteracion nº" + i);
+            System.out.println("camino actual: " + camino); */
             pesoCamino = calcularPeso(camino);
             String[] caminoArray = camino.split("/");
             nodo = caminoArray[caminoArray.length - 1];
-            System.out.println("nodo actual: " + nodo);
+            /* System.out.println("nodo actual: " + nodo);
+            System.out.println("Valor de la heuristica en el nodo " + nodo + "es de: " + heuristica.get(nodo)); */
+            if (camino.equals(caminoAnterior)) {
+                /* System.out.println("Añadiendo aumento: " + aumento); */
+                aumento += 1.0;
+            } else {
+                aumento = 0.0;
+            }
             visitados.put(nodo, pesoCamino + heuristica.get(nodo));
             if (!nodo.equals(destino)) {
-                actualizarEstructuras(listaAbierta, camino, pesoCamino);
-                System.out.println("ListaAbierta: " + listaAbierta.toString());
-                System.out.println("Visitados: " + visitados.toString());
+                actualizarEstructuras(listaAbierta, camino, pesoCamino, aumento);
+                /* System.out.println("ListaAbierta: " + listaAbierta.toString());
+                System.out.println("Visitados: " + visitados.toString()); */
+
             }
+            i++;
         } while (!nodo.equals(destino));
         return camino;
     }
@@ -146,28 +209,31 @@ public class Astar {
         return menorCamino;
     }
 
-    private void actualizarEstructuras(Map<String, Double> listaAbierta, String camino, Double peso) {
+    private void actualizarEstructuras(Map<String, Double> listaAbierta, String camino, Double peso, Double aumento) {
         String[] caminoArray = camino.split("/");
         String nodo = caminoArray[caminoArray.length - 1];
         Set<String> edges = estaciones.edgesOf(nodo);
         for (String edge : edges) {
-            System.out.println("edge:" + edge);
+            /* System.out.println("edge:" + edge); */
             String nodoFuente = estaciones.getEdgeSource(edge);
             String nodoObjetivo = estaciones.getEdgeTarget(edge);
             nodoObjetivo = nodoObjetivo.equals(nodo) ? nodoFuente : nodoObjetivo;
-            System.out.println("nodo de la arista: " + nodoObjetivo);
+            /* System.out.println("nodo de la arista: " + nodoObjetivo); */
             if (!contieneNodo(caminoArray, nodoObjetivo)) {
-                System.out.println("NO CONTIENE NODO OBJETIVO");
+                /* System.out.println("NO CONTIENE NODO OBJETIVO"); */
                 String cActualizado = camino;
                 cActualizado = camino + "/" + nodoObjetivo;
-                System.out.println("camino actualizado: " + cActualizado);
+                /* System.out.println("camino actualizado: " + cActualizado); */
                 double pActualizado = peso + estaciones.getEdgeWeight(edge) + heuristica.get(nodoObjetivo);
                 boolean contieneCamino = contieneCamino(listaAbierta, cActualizado);
-                System.out.println("contieneCamino: " + contieneCamino);
+                /* System.out.println("contieneCamino: " + contieneCamino); */
                 listaAbierta.remove(camino);
                 if (!contieneCamino || pActualizado < listaAbierta.get(cActualizado)) {
                     listaAbierta.put(cActualizado, pActualizado);
                 }
+            }
+            else if(listaAbierta.containsKey(camino)){
+                listaAbierta.put(camino, listaAbierta.get(camino) + aumento);
             }
         }
     }
@@ -184,27 +250,48 @@ public class Astar {
         return encontrado;
     }
 
-    // listaAbierta = {Vaux/Laurent}
-    // camino = Vaux/Laurent
-    // cArrayList = [Vaux]
-    // caminoArray = [Vaux,Laurent]
+    // listaAbierta = {Vaulx-en-Velin La Soie/Laurent Bonnevay
+    // Astroballe/Cusset/Flachet/Gratte-Ciel/République Villeurbanne/Linea-A
+    // Charpennes Charles}
+    // camino = Vaulx-en-Velin La Soie/Laurent Bonnevay
+    // Astroballe/Cusset/Flachet/Gratte-Ciel/République Villeurbanne/Linea-A
+    // Charpennes Charles Hernu/Linea-B Charpennes Charles Hernu
+    // Lista abierta Array: [Vaulx-en-Velin La Soie, Laurent Bonnevay Astroballe,
+    // Cusset, Flachet, Gratte-Ciel, République Villeurbanne, Linea-A Charpennes
+    // Charles Hernu, Masséna]
+    // Camino Array: [Vaulx-en-Velin La Soie, Laurent Bonnevay Astroballe, Cusset,
+    // Flachet, Gratte-Ciel, République Villeurbanne, Linea-A Charpennes Charles
+    // Hernu, Linea-B Charpennes Charles Hernu
 
     private boolean contieneCamino(Map<String, Double> listaAbierta, String camino) {
+
+        /* System.out.println("/////////////////Comprobando si contiene camino/////////////////");
+        System.out.println("Lista Abierta: " + listaAbierta.toString());
+        System.out.println("Camino: " + camino); */
+
         Set<String> keySet = listaAbierta.keySet();
         Iterator<String> it = keySet.iterator();
         String[] caminoArray = camino.split("/");
+        /* System.out.println("Camino Array: " + Arrays.toString((caminoArray))); */
         boolean encontrado = true;
         while (it.hasNext() && encontrado) {
             String[] cArrayList = it.next().split("/");
+            /* System.out.println("Lista abierta Array: " + Arrays.toString((cArrayList))); */
             encontrado = cArrayList.length == caminoArray.length;
             for (int i = 0; i < cArrayList.length && encontrado; i++) {
+                /* System.out.println("Iteracion nº" + i); */
                 String nodo = cArrayList[i];
+                /* System.out.println("nodo a buscar: " + nodo); */
                 encontrado = false;
                 for (int j = 0; j < caminoArray.length && !encontrado; j++) {
+                    /* System.out.println("nodo actual: " + caminoArray[j]); */
                     encontrado = nodo.equals(caminoArray[j]);
                 }
             }
         }
+
+        /* System.out.println("/////////////////Fin de comprobación /////////////////"); */
+
         return encontrado;
     }
 
