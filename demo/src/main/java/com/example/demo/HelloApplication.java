@@ -119,11 +119,11 @@ public class HelloApplication extends Application {
         Label labelto = new Label("Destino:");
 
         from = new ComboBox<>();
-        from.getItems().addAll("Vaulx-en-Velin La Soie", "Laurent Bonnevay Astroballe", "Cusset", "Flachet", "Gratte-Ciel", "République Villeurbanne", "Linea-A Charpennes Charles Hernu", "Masséna", "Foch", "Linea-A Hôtel De Ville Louis Pradel", "Cordeliers", "Linea-A Bellecour", "Ampère Victor Hugo", "Perrache", "Oullins Gare", "Stade de Gerland", "Debourg", "Place Jean Jaurès", "Jean Macé", "Linea-B Saxe Gambetta", "Place Guichard Bourse du Travail", "Gare Part-Dieu Vivier Merle", "Brotteaux", "Croix-Paquet", "Croix-Rousse", "Hénon", "Cuire", "Gare de Venissieux", "Parilly", "Mermoz Pinel", "Laënnec", "Grange Blanche", "Monplaisir–Lumière", "Sans-Souci", "Garibaldi", "Guillotière", "Fourviere", "Vieux Lyon Cathédrale St. Jean", "Minimes Theatres Romains", "Saint-Just", "Gorge De Loup", "Valmy", "Gare de Vaise");
+        from.getItems().addAll("Vaulx-en-Velin La Soie", "Laurent Bonnevay Astroballe", "Cusset", "Flachet", "Gratte-Ciel", "République Villeurbanne", "Linea-A Charpennes Charles Hernu", "Masséna", "Foch", "Linea-C Hôtel De Ville Louis Pradel","Linea-A Hôtel De Ville Louis Pradel", "Cordeliers", "Linea-A Bellecour","Linea-D Bellecour" ,"Ampère Victor Hugo", "Perrache", "Oullins Gare", "Stade de Gerland", "Debourg", "Place Jean Jaurès", "Jean Macé", "Saxe Gambetta", "Place Guichard Bourse du Travail", "Gare Part-Dieu Vivier Merle", "Brotteaux", "Croix-Paquet", "Croix-Rousse", "Hénon", "Cuire", "Linea-D Saxe Gambetta","Linea-B Saxe Gambetta", "Linea-D Bellecour", "Gare de Venissieux", "Parilly", "Mermoz Pinel", "Laënnec", "Grange Blanche", "Monplaisir–Lumière", "Sans-Souci", "Garibaldi", "Guillotière", "Fourviere", "Vieux Lyon Cathédrale St. Jean", "Minimes Theatres Romains", "Saint-Just", "Gorge De Loup", "Valmy", "Gare de Vaise");
         from.setPromptText("Elige una opcion");
 
         to = new ComboBox<>();
-        to.getItems().addAll("Vaulx-en-Velin La Soie", "Laurent Bonnevay Astroballe", "Cusset", "Flachet", "Gratte-Ciel", "République Villeurbanne", "Charpennes Charles Hernu", "Masséna", "Foch", "Hôtel De Ville Louis Pradel", "Cordeliers", "Bellecour", "Ampère Victor Hugo", "Perrache", "Oullins Gare", "Stade de Gerland", "Debourg", "Place Jean Jaurès", "Jean Macé", "Saxe Gambetta", "Place Guichard Bourse du Travail", "Gare Part-Dieu Vivier Merle", "Brotteaux", "Croix-Paquet", "Croix-Rousse", "Hénon", "Cuire", "Gare de Venissieux", "Parilly", "Mermoz Pinel", "Laënnec", "Grange Blanche", "Monplaisir–Lumière", "Sans-Souci", "Garibaldi", "Guillotière", "Fourviere", "Vieux Lyon Cathédrale St. Jean", "Minimes Theatres Romains", "Saint-Just", "Gorge De Loup", "Valmy", "Gare de Vaise");
+        to.getItems().addAll("Vaulx-en-Velin La Soie", "Laurent Bonnevay Astroballe", "Cusset", "Flachet", "Gratte-Ciel", "République Villeurbanne", "Linea-A Charpennes Charles Hernu", "Masséna", "Foch", "Linea-C Hôtel De Ville Louis Pradel","Linea-A Hôtel De Ville Louis Pradel", "Cordeliers", "Linea-A Bellecour","Linea-D Bellecour" ,"Ampère Victor Hugo", "Perrache", "Oullins Gare", "Stade de Gerland", "Debourg", "Place Jean Jaurès", "Jean Macé", "Saxe Gambetta", "Place Guichard Bourse du Travail", "Gare Part-Dieu Vivier Merle", "Brotteaux", "Croix-Paquet", "Croix-Rousse", "Hénon", "Cuire", "Linea-D Saxe Gambetta","Linea-B Saxe Gambetta", "Linea-D Bellecour", "Gare de Venissieux", "Parilly", "Mermoz Pinel", "Laënnec", "Grange Blanche", "Monplaisir–Lumière", "Sans-Souci", "Garibaldi", "Guillotière", "Fourviere", "Vieux Lyon Cathédrale St. Jean", "Minimes Theatres Romains", "Saint-Just", "Gorge De Loup", "Valmy", "Gare de Vaise");
         to.setPromptText("Elige una opcion");
 
         frompane.addRow(0, labelfrom, from);
@@ -173,6 +173,8 @@ public class HelloApplication extends Application {
 
 
         GridPane caminoGP = new GridPane();
+        //System.out.println("la réponse est :" + ans);
+        //Label label = new Label(ans);
         List<String> l = new ArrayList<>(Arrays.asList(ans.split("/")));
         for(int i =0; i < l.size(); ++i){
             Label label = new Label(l.get(i));
@@ -183,9 +185,8 @@ public class HelloApplication extends Application {
                 label.setStyle("-fx-font-size: 1.5em;");
             }
             thankYouLayout.getChildren().add(label);
-
-
         }
+        //thankYouLayout.getChildren().add(label);
 
         Button restartButton = new Button("Restart");
         restartButton.setStyle(
