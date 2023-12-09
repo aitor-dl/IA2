@@ -32,7 +32,7 @@
 	{
 		"Name": "Linea-A Charpennes Charles Hernu",
 		"Latitude": 45.77074226393096,
-		"Longitude": 4.862969610428967 
+		"Longitude": 4.862969610428967
 	},
 	{
 		"Name": "Masséna",
@@ -47,7 +47,7 @@
 	{
 		"Name": "Linea-A Hôtel De Ville Louis Pradel",
 		"Latitude": 45.76753468565001,
-		"Longitude": 4.836299268101861 
+		"Longitude": 4.836299268101861
 	},
 	{
 		"Name": "Cordeliers",
@@ -57,7 +57,7 @@
 	{
 		"Name": "Linea-A Bellecour",
 		"Latitude": 45.75789654002199,
-		"Longitude": 4.833673868101367 
+		"Longitude": 4.833673868101367
 	},
 	{
 		"Name": "Ampère Victor Hugo",
@@ -97,7 +97,7 @@
 	{
 		"Name": "Linea-B Saxe Gambetta",
 		"Latitude": 45.75390734483807,
-		"Longitude": 4.846949539264582 
+		"Longitude": 4.846949539264582
 	},
 	{
 		"Name": "Place Guichard Bourse du Travail",
@@ -118,12 +118,12 @@
 		"Name": "Linea-B Charpennes Charles Hernu",
 		"Latitude": 45.77074226393096,
 		"Longitude": 4.862969610428967
-	},	
+	},
 	{
 		"Name": "Linea-C Hôtel De Ville Louis Pradel",
 		"Latitude": 45.76753468565001,
-		"Longitude": 4.836299268101861 
-	},	
+		"Longitude": 4.836299268101861
+	},
 	{
 		"Name": "Croix-Paquet",
 		"Latitude": 45.771119578994785,
@@ -170,7 +170,7 @@
 		"Longitude": 4.878866325773554
 	},
 	{
-		"Name": "Monplaisir–Lumière",
+		"Name": "Monplaisir-Lumière",
 		"Latitude": 45.74571666078091,
 		"Longitude": 4.871239195081432
 	},
@@ -184,10 +184,10 @@
 		"Latitude": 45.75175025509033,
 		"Longitude": 4.853982310427905
 	},
-		{
+	{
 		"Name": "Linea-D Saxe Gambetta",
 		"Latitude": 45.75390734483807,
-		"Longitude": 4.846949539264582 
+		"Longitude": 4.846949539264582
 	},
 	{
 		"Name": "Guillotière",
@@ -197,10 +197,10 @@
 	{
 		"Name": "Linea-D Bellecour",
 		"Latitude": 45.75789654002199,
-		"Longitude": 4.833673868101367 
+		"Longitude": 4.833673868101367
 	},
 	{
-		"Name": "Fourviere",
+		"Name": "Fourvière",
 		"Latitude": 45.76273777014558,
 		"Longitude": 4.82143727156357
 	},
@@ -210,7 +210,7 @@
 		"Longitude": 4.825761305641606
 	},
 	{
-		"Name": "Minimes Theatres Romains",
+		"Name": "Minimes Théâtres Romains",
 		"Latitude": 45.758580019370946,
 		"Longitude": 4.821200710428295
 	},
@@ -233,5 +233,5 @@
 		"Name": "Gare de Vaise",
 		"Latitude": 45.78109649886706,
 		"Longitude": 4.80504691596378
-	}	
+	}
 ]
