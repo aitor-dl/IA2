@@ -1,3 +1,5 @@
+package com.example.demo;
+
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
@@ -38,10 +40,10 @@ public class Astar {
             return;
         }
         JSONParser parser = new JSONParser();
-        InputStream is = App.class.getResourceAsStream("/json/coordenadas.json");
+        InputStream is = getClass().getResourceAsStream("/json/coordenadas.json");
         Reader rd = new InputStreamReader(is, "UTF-8");
         coords = (JSONArray) parser.parse(rd);
-        is = App.class.getResourceAsStream("/json/aristas.json");
+        is = getClass().getResourceAsStream("/json/aristas.json");
         rd = new InputStreamReader(is, "UTF-8");
         aristas = (JSONArray) parser.parse(rd);
         /* inicializar estructuras de datos */
@@ -102,9 +104,9 @@ public class Astar {
                                 * Math.cos(origenLat);
                 double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
                 heuristica.put((String) jorigen.get("Name"), 6371 * c);
-                
+
                 /* System.out.println("la heuristica desde  "+(String) jorigen.get("Name") +"es de: " + 6371 * c); */
-                
+
             } else {
                 heuristica.put((String) jorigen.get("Name"), 0.0);
             }
